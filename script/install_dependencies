@@ -3,3 +3,9 @@ cd /var/www/symfony
 curl -s https://getcomposer.org/installer | php
 php composer.phar install
 mv composer.phar /usr/local/bin/composer
+
+## set permission
+chown -R ec2-user:ec2-user /var/www/symfony
+userAdd -G ec2-user nginx
+chgrp -R nginx var/cache var/logs var/sessions
+chmod -R ug+rwx var/cache var/logs var/sessions
